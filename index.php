@@ -1,9 +1,8 @@
 <?php
-$auto = filter_input(INPUT_POST, "auta");
-$spz = filter_input(INPUT_POST, "spz");
-$submit = filter_input(INPUT_POST, "submit");
-$types = array("osobní","nákladní","autobus","karavan","trolejbus")
-
+$auto = filter_input(INPUT_POST, 'auta');
+$spz = filter_input(INPUT_POST, 'spz');
+$submit = filter_input(INPUT_POST, 'submit');
+$types = array('osobní', 'nákladní', 'autobus', 'karavan', 'trolejbus');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,27 +13,25 @@ $types = array("osobní","nákladní","autobus","karavan","trolejbus")
 </head>
 <body>
 <?php
-if (isset ($submit)) { ?>
-    Typ:<?= $auto ?> <br>
-    SPZ:<?= $spz ?>
-    <?php
+if (isset($submit)) { ?>
+   Typ: <?= $auto ?><br>
+   SPZ: <?= $spz ?>
+   <?php
 }   else { ?>
-    <form action="index.php" method="post">
-        Typ vozidla:<select name="auta" id="auta">
-    <option value="osobní">osobní</option>
-    <option value="nákladní">nákladní</option>
-    <option value="autobus">autobusy</option>
-    <option value="karavan">karavan</option>
-    <option value="trolejbus">trolejbus</option>
-    </select>
-    <br>
-SPZ
-    <input type="text" name="spz"></br>
-    <input type="submit" name="submit" value="Odeslat">
+<form action="index.php" method="post">
+Typ vozidla: <select name="auta" id="auta">
+    <?php foreach ($types as $type) { ?>
+                 <option value="<?= $type ?>"><?= $type ?></option>
+    <?php
+    } ?>    
+            </select>
+            <br>
+SPZ:         <input type="text" name="spz"><br>
+             <input type="submit" name="submit" value="Odeslat">
 </form>
+
 <?php
 } ?>
-
 
 </body>
 </html>
